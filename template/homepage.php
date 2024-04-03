@@ -42,6 +42,6 @@ ob_start(); ?>
     </section>
 </main>
 
-<?php $content = ob_get_clean(); ?>
+<?php $content = ob_get_clean(); 
 
-<?php require('layout.php') ?>
+require('layout.php');

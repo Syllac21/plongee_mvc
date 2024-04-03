@@ -12,8 +12,7 @@ const MYSQL_PASSWORD = '';
 function dbConnect()
 {
     try{
-        $database = new PDO(
-            sprintf('mysql:host=%s;dbname=%s;charset=utf8', MYSQL_HOST, MYSQL_NAME, MYSQL_PORT),
+        $database = new PDO('mysql:host='.MYSQL_HOST.';dbname='.MYSQL_NAME.';charset=utf8',
             MYSQL_USER, MYSQL_PASSWORD
         );
         return $database;

@@ -15,14 +15,14 @@ require_once(__DIR__.'/header.php');
         
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">
-                <label for="fish-name" class="block text-sm font-medium leading-6 text-gray-300">Nom du poisson</label>
+                    <label for="fish-name" class="block text-sm font-medium leading-6 text-gray-300">Nom du poisson</label>
                     <div class="mt-2">
                         <input type="text" name="fish-name" id="fish-name" class="block rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 w-1/2">
                     </div>
                 </div>
 
                 <div class="sm:col-span-3">
-                <label for="average-size" class="block text-sm font-medium leading-6 text-gray-300">Taille moyenne</label>
+                    <label for="average-size" class="block text-sm font-medium leading-6 text-gray-300">Taille moyenne</label>
                     <div class="mt-2">
                         <input type="text" name="average-size" id="average-size" class="block w-1/2 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                     </div>
@@ -35,24 +35,24 @@ require_once(__DIR__.'/header.php');
                     </div>
                     <p class="mt-3 text-sm leading-6 text-gray-600">Tapez une description de l'espèce que vous voulez saisir</p>
                 </div>
-            <div class="border-b border-gray-900/10 pb-12">
+                <div class="border-b border-gray-900/10 pb-12">
         
         
         <!-- photo -->
-                <div class="col-span-full">
-                    <label for="image" class="block text-sm font-medium leading-6 text-gray-300">Photo</label>
-                    <div class="mt-2 flex items-center gap-x-3">
-                        
-                        <input type="file" name="image" id="image" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                    <div class="col-span-full">
+                        <label for="image" class="block text-sm font-medium leading-6 text-gray-300">Photo</label>
+                        <div class="mt-2 flex items-center gap-x-3">
+                            
+                            <input type="file" name="image" id="image" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                        </div>
                     </div>
-                </div>
 
             
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
+        <!--</div>
+        </div>-->
 
         
     </div>
@@ -67,4 +67,3 @@ require_once(__DIR__.'/header.php');
 <?php $content = ob_get_clean(); 
 
 require_once('layout.php');
-?>
