@@ -59,4 +59,23 @@ class Fishs
         ]);
     }
 
+    public function modFish(array $postdata) : bool
+    {
+        $id = $postdata['id'];
+        $fishName = $postdata['fish_name'];
+        $averageSize= $postdata['average_size'];
+        $about = $postdata['about'];
+        $image = $postdata['image'];
+
+        $mysqlClient = dbConnect();
+        $changeFish = $mysqlClient->prepare('UPDATE fishs SET fish_name = :fish_name, average_size=:average_size, about=:about, image=:image WHERE id=:id');
+        return $changeFish->execute([
+            'id'=>$id,
+            'fish_name'=>$fishName,
+            'average_size'=>$averageSize,
+            'about'=>$about,
+            'image'=>$image,
+        ]);
+    }
+
 }

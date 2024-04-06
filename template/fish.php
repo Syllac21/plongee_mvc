@@ -40,7 +40,7 @@ require_once(__DIR__.'/header.php');
             </div>
         </section>
         <div class="w-full flex justify-center my-5">
-		<a  href="/pages/about/modify_fish.php?id=<?php echo($fish['id']); ?>" @endif
+		<a  href="/index.php?action=modfish&id=<?= $fish['id'] ?>"
 			class="flex text-gray-100 justify-center transition duration-200 ease-in-out transform px-4 py-2 w-48 border-b-4 border-gray-500 hover:border-b-2 bg-gradient-to-t from-gray-400  via-gray-600 to-gray-200 rounded-2xl hover:translate-y-px "
 
 			style="-webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 8px rgba(0,0,0,0); 

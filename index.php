@@ -10,6 +10,9 @@ if(isset($_GET['action'])&& $_GET['action'] !== '')
     if($_GET['action'] === 'addfish'){
         $pageDisplay=$page->addfish();
     }
+    if($_GET['action'] === 'modfish'){
+        
+    }
     echo 'page en construction';
 }elseif(isset($_GET['id'])&& is_numeric($_GET['id'])) 
 {
