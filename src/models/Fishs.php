@@ -47,6 +47,15 @@ class Fishs
         return $fish;
     }
 
+    /**
+     * Ajouter un nouveau poisson à la base de données
+     *
+     * @param string $fish_name
+     * @param string $average_size
+     * @param [type] $about
+     * @param [type] $image
+     * @return void
+     */
     public function addFish(string $fish_name, string $average_size, $about, $image)
     {
         $mysqlClient=dbConnect();
@@ -59,11 +68,18 @@ class Fishs
         ]);
     }
 
+    
+    /**
+     * Modifier les informations relatives à un poisson dans la base de donnée
+     *
+     * @param array $postdata
+     * @return boolean
+     */
     public function modFish(array $postdata) : bool
     {
         $id = $postdata['id'];
-        $fishName = $postdata['fish_name'];
-        $averageSize= $postdata['average_size'];
+        $fishName = $postdata['fish-name'];
+        $averageSize= $postdata['average-size'];
         $about = $postdata['about'];
         $image = $postdata['image'];
 

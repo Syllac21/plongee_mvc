@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__.'/src/controllers/Modfish.php');
+require_once(dirname(__DIR__,1).'/src/controllers/Modfish.php');
 
 $objModFish = new Modfish;
 $fish=$objModFish->prepareMod($_GET['id']);
@@ -9,14 +9,15 @@ $title = $fish['fish_name'];
 ob_start(); 
 require_once(__DIR__.'/header.php');
 ?>
-
 <main class="container mx-auto-5">
     <h2 class="text-center font-semibold leading-7 text-gray-300 text-2xl"><?=$fish['fish_name']; ?> </h2>
-    <form action="/index.php?action=modfish&id=<?=$fish['id']; ?>" method="POST" class="mx-auto w-1/2 flex flex-col justify-center" enctype="multipart/form-data">
+
+    <!-- formulaire -->
+    <form action="/index.php?action=modfishSub&id=<?=$fish['id']; ?>" method="POST" class="mx-auto w-1/2 flex flex-col justify-center" enctype="multipart/form-data">
     <div class="space-y-12">
         
         <div class="border-b border-gray-900/10 pb-12">
-        
+        <input type="hidden" name="id" id="id" value="<?=$_GET['id'];?>">
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
                 <div class="sm:col-span-3">
                     <label for="fish-name" class="block text-sm font-medium leading-6 text-gray-300">Nom du poisson</label>
@@ -44,20 +45,18 @@ require_once(__DIR__.'/header.php');
         
         <!-- photo -->
                     <div class="col-span-full">
-                        <label for="image" class="block text-sm font-medium leading-6 text-gray-300">Photo</label>
+                        <label for="new-image" class="block text-sm font-medium leading-6 text-gray-300">Photo</label>
                         <div class="mt-2 flex items-center gap-x-3">
                             
-                            <input type="file" value="idem" name="image" id="image" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+                            <input type="file" name="new-image" id="new-image" class="rounded-md bg-white px-2.5 py-1.5 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
                         </div>
-                        <input type="hidden" name="oldImage" id="oldImage" value="<?=$fish['image'];?>">
+                        <input type="hidden" name="image" id="image" value="<?=$fish['image'];?>">
                     </div>
 
             
                 </div>
             </div>
         </div>
-        <!--</div>
-        </div>-->
 
         
     </div>

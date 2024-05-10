@@ -11,6 +11,7 @@ class Modfish{
      */
     public function prepareMod (int $id) : array 
     {
+        
         if(
             empty($id) ||
             !is_numeric($id)
@@ -23,8 +24,34 @@ class Modfish{
         return $fish;
     }
 
-    public function sendMod(array $postData, array $files): bool
+    public function sendModWithoutImage(array $postData) : bool
     {
+        // vérifiation des données
+        if(
+            trim(strip_tags($postData['fish-name']))==='' ||
+            trim(strip_tags($postData['average-size']))===''||
+            trim(strip_tags($postData['about'])==='')
+        ){
+            echo("tous les champs sont obligatoires");
+            exit;
+
+        }
+        $sendFish = new Fishs;
+
+        return $sendFish->modFish($postData);
+        
+    }
+
+    /**
+     * modifie les informations sur le poisson concerné et l'image correspondante
+     *
+     * @param array $postData
+     * @param array $files
+     * @return boolean
+     */
+    public function sendModWithImage(array $postData, array $files): bool
+    {
+        
         // vérifiation des données
         if(
             trim(strip_tags($postData['fish-name']))==='' ||
@@ -38,16 +65,15 @@ class Modfish{
         
         // gestion de l'image
 
-        $dossier = '../../images/';
-        $fichier = basename($files['image']['name']);
-        $taille = filesize($files['image']['tmp_name']);
+        $dossier = './images/';
+        $fichier = basename($files['new-image']['name']);
+        $taille = filesize($files['new-image']['tmp_name']);
         $taille_max=5000000;
         $extensionOk = ['.png', '.gif', '.jpg', '.jpeg', '.webp'];
-        $extension = strchr($files['image']['name'],'.');
+        $extension = strchr($files['new-image']['name'],'.');
 
         if(
-            !empty($files['image']['name']) &&
-            $files['image']['name'] !== 'idem'
+            !empty($files['new-image']['name'])
         ){
             // vérification de l'extension 
             if(!in_array($extension,$extensionOk)){$erreur= 'les extensions autorisées sont les suivantes : .png .gif ..jpg .jpeg .wbep';}
@@ -59,7 +85,7 @@ class Modfish{
                 // remplacement des caractère avec des accents
                 $fichier=strtr($fichier,'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ','AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
                 // déplacement du fichier temporaire
-                if(move_uploaded_file($_FILES['image']['tmp_name'], $dossier.$fichier)){
+                if(move_uploaded_file($files['new-image']['tmp_name'], $dossier.$fichier)){
                     echo 'téléchargement OK';
                 }
                 else{
@@ -67,11 +93,8 @@ class Modfish{
                     exit;
                 }
             }
-        } elseif ($postData['image'] === 'idem'){
-            $postData['image']=$postData['oldImage'];
-        }else{
-            echo 'pas d\'image';
         }
+        $postData['image'] = $files['new-image']['name'];
         $sendFish = new Fishs;
 
         return $sendFish->modFish($postData);

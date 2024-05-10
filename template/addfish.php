@@ -6,9 +6,9 @@ ob_start();
 require_once(__DIR__.'/header.php');
 ?>
 
-<main class="container mx-auto-5">
+
     <h2 class="text-center font-semibold leading-7 text-gray-300 text-2xl">Nouveau poisson</h2>
-    <form action="/src/controllers/addfish.php" method="POST" class="mx-auto w-1/2 flex flex-col justify-center" enctype="multipart/form-data">
+    <form action="/src/controllers/addfish.php" method="POST" class="mx-auto px-5 w-1/2 flex flex-col justify-center bg-cyan-500 bg-opacity-40" enctype="multipart/form-data">
     <div class="space-y-12">
         
         <div class="border-b border-gray-900/10 pb-12">
@@ -62,7 +62,7 @@ require_once(__DIR__.'/header.php');
         <button type="submit" class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
     </div>
     </form>
-</main>
+
 
 <?php $content = ob_get_clean(); 
 
