@@ -31,6 +31,7 @@ class Users
      * @param string $password
      * @return bool
      */
+
     public function addUser(string $firstname, string $lastname, string $email, string $password) : bool {
         $mysqlClient=dbConnect();
         $addUser = $mysqlClient->prepare('INSERT INTO users(firstname, lastname, email, password) VALUES (:firstname, :lastname, :email, :password)');
@@ -39,9 +40,7 @@ class Users
             'lastname'=>$lastname,
             'email'=>$email,
             'password'=>$password,
-        ]);
-        
-          
+        ]);     
     }
 
     // voir pour retourner un booléen en fonction de la réussite de la requête peut-être

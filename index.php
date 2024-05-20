@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once(__DIR__.'/template/login.php');
+
 require_once(__DIR__.'/src/models/Pages.php');
 require_once(__DIR__.'/src/controllers/Modfish.php');
 require_once(__DIR__.'/src/models/Spots.php');
@@ -8,6 +8,8 @@ require_once(__DIR__.'/src/controllers/Addspot.php');
 require_once(__DIR__.'/src/models/Users.php');
 
 $page= new Pages;
+
+require_once(__DIR__.'/template/login.php');
 
 if(isset($_GET['action'])&& $_GET['action'] !== '') 
 {

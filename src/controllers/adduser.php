@@ -31,10 +31,5 @@ $password=password_hash(trim(strip_tags($postData['password'])), PASSWORD_DEFAUL
 $objUser= new Users;
 $addUser=$objUser->addUser($firstname, $lastname, $email, $password);
 
-$_SESSION['LOGGED_USER'] = [
-    'email' => $user['email'],
-    'id_user' => $user['id_user'],
-];
-
 header('location: /index.php');
 exit;
